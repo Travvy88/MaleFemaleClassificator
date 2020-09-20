@@ -19,7 +19,7 @@ def process(path):
 
     net = models.resnet18(pretrained=False).to(device)
     net.fc = torch.nn.Linear(512, 2).to(device)  # ставим выходной слой на 2 класса
-    net.load_state_dict(torch.load('epoch_3.pth'))  # загружаю веса самой удачной эпохи 
+    net.load_state_dict(torch.load('model_weights/epoch_3.pth'))  # загружаю веса самой удачной эпохи 
     net.eval()
     aug = albumentations.Compose([
         albumentations.Resize(224, 224, always_apply=True),
